@@ -1,8 +1,22 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import aboutPhoto from '../assets/about-me.jpg';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import aboutPhoto1 from '../assets/about-me.jpg';
+import aboutPhoto2 from '../assets/about-carousel-2.jpg';
+import aboutPhoto3 from '../assets/about-carousel-3.jpg';
+import aboutPhoto4 from '../assets/about-carousel-4.jpg';
+
+const photos = [aboutPhoto1, aboutPhoto2, aboutPhoto3, aboutPhoto4];
 
 const About = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % photos.length);
+    }, 4000); // Change image every 4 seconds
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section id="about" className="py-24 bg-[#0a0a0a] relative overflow-hidden">
       <div className="container mx-auto px-6">
@@ -11,18 +25,34 @@ const About = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative group"
+            className="relative group h-full"
           >
-            <div className="aspect-[4/5] rounded-[2rem] overflow-hidden glass border border-white/10 shadow-2xl">
-              <img 
-                src={aboutPhoto}
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100" 
-                alt="Renz with the squad" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-              <div className="absolute bottom-8 left-8">
-                <p className="text-lg font-black text-white uppercase tracking-widest">With LFG Boys</p>
+            <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden glass border border-white/10 shadow-2xl">
+              <AnimatePresence mode="wait">
+                <motion.img 
+                  key={currentIndex}
+                  src={photos[currentIndex]}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.8 }}
+                  className="absolute inset-0 w-full h-full object-cover" 
+                  alt="Renz Filart" 
+                />
+              </AnimatePresence>
+              
+              {/* Carousel Indicators */}
+              <div className="absolute bottom-6 left-0 right-0 flex justify-center space-x-2 z-10">
+                {photos.map((_, i) => (
+                  <button 
+                    key={i}
+                    onClick={() => setCurrentIndex(i)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-blue-500 w-6' : 'bg-white/40 hover:bg-white/80'}`}
+                  />
+                ))}
               </div>
+              
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 pointer-events-none" />
             </div>
           </motion.div>
 
