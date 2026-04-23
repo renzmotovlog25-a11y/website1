@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import aboutPhoto from '../assets/about-me.jpg';
 
 const About = () => {
   return (
@@ -14,7 +15,7 @@ const About = () => {
           >
             <div className="aspect-[4/5] rounded-[2rem] overflow-hidden glass border border-white/10 shadow-2xl">
               <img 
-                src="./src/assets/about-me.jpg" 
+                src={aboutPhoto}
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100" 
                 alt="Renz with the squad" 
               />
