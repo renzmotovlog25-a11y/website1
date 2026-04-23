@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import Bike3D from './components/Bike3D';
 import Socials from './components/Socials';
 import Portfolio from './components/Portfolio';
 import TikTok from './components/TikTok';
@@ -17,6 +18,7 @@ function App() {
       <main>
         <Hero />
         <About />
+        <Bike3D />
         <Socials />
         <Portfolio />
         <TikTok />
