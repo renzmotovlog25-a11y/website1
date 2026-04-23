@@ -21,8 +21,7 @@ const About = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
               <div className="absolute bottom-8 left-8">
-                <p className="text-4xl font-black text-blue-500">50K+</p>
-                <p className="text-xs uppercase tracking-[0.4em] text-gray-300 font-bold">Total Views</p>
+                <p className="text-lg font-black text-white uppercase tracking-widest">With LFG Boys</p>
               </div>
             </div>
           </motion.div>
