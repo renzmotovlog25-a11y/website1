@@ -28,14 +28,14 @@ const About = () => {
             className="relative group h-full"
           >
             <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden glass border border-white/10 shadow-2xl">
-              <AnimatePresence mode="wait">
+              <AnimatePresence>
                 <motion.img 
                   key={currentIndex}
                   src={photos[currentIndex]}
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.8 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1 }}
                   className="absolute inset-0 w-full h-full object-cover" 
                   alt="Renz Filart" 
                 />
